@@ -1,0 +1,10 @@
+import math
+
+def sphere_volume(radius):
+    volume = (4/3*math.pi*radius**3)
+    return volume
+
+rad = float(input("Enter the radius of a sphere: "))
+print("Volume: ", sphere_volume(rad))
+
+
