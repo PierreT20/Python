@@ -1,28 +1,28 @@
-ClassA = 15
-ClassB = 12
-ClassC = 9
+from cImage import *
 
-def incomeOfA(x):
-    incomeA = ClassA*x
-    return incomeA
+def SmoothPixel(oldPixel):
+    newRed = (int(oldPixel.getRed()/2))*1
+    newGreen = (int(oldPixel.getGreen()/2))*1
+    newBlue = (int(oldPixel.getBlue()/2))*1
+    newPixel = Pixel(newRed, newGreen, newBlue)
+    return newPixel
 
-def incomeOfB(z):
-    incomeB = ClassB*z
-    return incomeB
+def MakeSmooth(imageFile):
+    oldImage = FileImage(imageFile)
+    width = oldImage.getWidth()
+    height = oldImage.getHeight()
 
-def incomeOfC(v):
-    incomeC = ClassC*v
-    return incomeC
+    Win = ImageWin('Smooth Image', width *2, height)
+    oldImage.draw(Win)
+    newImage = EmptyImage(width, height)
 
-def TotalIncome(incomeOfA,incomeOfB,incomeOfC):
-    Total = incomeOfA(x) + incomeOfB(z) + incomeOfC(v)
-    return Total
-
-x = float(input("Enter count of A seats: "))
-z = float(input("Enter count of B seats: "))
-v = float(input("Enter count of C seats: "))
-
-print("Income from Class A seats: ",incomeOfA(x))
-print("Income from Class B seats: ",incomeOfB(z))
-print("Income from Class C seats: ",incomeOfC(v))
-print("Total income: ",TotalIncome(incomeOfA,incomeOfB,incomeOfC))
+    for row in range(height):
+        for col in range(width):
+            oldPixel = oldImage.getPixel(col, row)
+            newPixel = SmoothPixel(oldPixel)
+            newImage.setPixel(col, row, newPixel)
+    newImage.setPosition(width + 1, 0)
+    newImage.draw(Win)
+    
+MakeSmooth("pic.gif")
+                         

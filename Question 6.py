@@ -1,9 +1,13 @@
-x = float(input("Enter the total sales for the month: "))
-StateTax = x*(1/100*4)
-CountyTax = x*(1/100*2)
-TotalTax = StateTax + CountyTax
+print("first nested loop\n")
 
-print("Monthly sales: $",x)
-print("State tax: $",StateTax)
-print("County tax: $",CountyTax)
-print("Total tax: $",TotalTax)
+for i in range(1, 8):
+    for j in range(1, i+1):
+        print('*', end='')
+    print()
+
+print("\nsecond nested loop\n")
+
+for i in range(7, 0, -1):
+    for j in range(1, i+1):
+        print('*', end='')
+    print()

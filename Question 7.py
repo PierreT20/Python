@@ -1,38 +1,31 @@
-#gallons = wall/115
-#hours = gallons*8
-#cost = paint*gallons
-#labour = hours*20
-#total = cost+labour
-import math
+r = 4
+c = 3
+a = []
 
-def gallons(wall):
-    gallons = math.ceil(wall/115)
-    return gallons
+for i in range(r):
+    a.append([0]*c)
+print("Part a")
 
-def hours(gallons):
-    hours = gallons(wall)*8
-    return hours
+for i in range(r):
+    print(*a[i])
 
-def cost(paint,gallons):
-    cost = paint*gallons(wall)
-    return cost
+for i in range(r):
+    if i == 0:
+        a[i] = [1] * c
+    else:
+        a[i] = [3] * c
+print("Part b")
 
-def labour(hours):
-    labour = hours(gallons)*20
-    return labour
+for i in range(r):
+    print(*a[i])
 
-def total(cost,labour):
-    total = cost(paint,gallons) + labour(hours)
-    return total
+for i in range(r):
+    a[i][0] = 2
 
-wall = float(input("Enter wall space in suqare feet: "))
-paint = float(input("Enter paint price per gallon: "))
+for i in range(r):
+    a[i][1] = a[i][0] * 2
+    a[i][2] = a[i][1] * 2
+print("Part c")
 
-print("Gallons of paint: ",gallons(wall))
-print("hours of labor: ",hours(gallons))
-print("Paint charges: $", cost(paint,gallons))
-print("Labor charges: $", labour(hours))
-print("Total cost: $",total(cost,labour))
-
-
-
+for i in range(r):
+    print(*a[i])
